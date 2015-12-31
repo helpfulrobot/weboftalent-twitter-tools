@@ -1,17 +1,18 @@
 <?php 
-class EmbeddedTweet extends DataObject {
-	private static $db = array(
-		'cache_age' => 'Int',
-		'URL' => 'Varchar(255)',
-		'TwitterID' => 'VarChar(40)',
-		'HTML' => 'Text',
-		'Processed' => 'Boolean',
-		'LargeURL' => 'Varchar(255)'
-	);
+class EmbeddedTweet extends DataObject
+{
+    private static $db = array(
+        'cache_age' => 'Int',
+        'URL' => 'Varchar(255)',
+        'TwitterID' => 'VarChar(40)',
+        'HTML' => 'Text',
+        'Processed' => 'Boolean',
+        'LargeURL' => 'Varchar(255)'
+    );
 
-	private static $belongs_to = array('EmbeddedTweetAuthor');
+    private static $belongs_to = array('EmbeddedTweetAuthor');
 
-	public static $indexes = array(
+    public static $indexes = array(
         // Just smack a btree index on Email
         'TwitterID' => true
     );

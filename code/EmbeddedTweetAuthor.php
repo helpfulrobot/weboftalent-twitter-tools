@@ -1,15 +1,15 @@
 <?php 
 
-class EmbeddedTweetAuthor extends DataObject {
-	private static $db = array(
-		'URL' => 'Varchar(255)',
-		'Name' => 'Varchar(255)'
-	);
+class EmbeddedTweetAuthor extends DataObject
+{
+    private static $db = array(
+        'URL' => 'Varchar(255)',
+        'Name' => 'Varchar(255)'
+    );
 
-	private static $has_many = array(
-		'Tweets' => 'EmbeddedTweet'
-	);
-
+    private static $has_many = array(
+        'Tweets' => 'EmbeddedTweet'
+    );
 }
 /*
 Array ( [cache_age] => 3153600000 [url] => https://twitter.com/qandrew/statuses/469515779415625729 

@@ -1,21 +1,22 @@
 <?php
 
-class TwitterShortCodeHandler {
+class TwitterShortCodeHandler
+{
 
     // taken from http://www.ssbits.com/tutorials/2010/2-4-using-short-codes-to-embed-a-youtube-video/ and adapted for SS3
-    public static function parse_tweet( $arguments, $caption = null, $parser = null ) {
-        if(!isset($arguments['id'])){
+    public static function parse_tweet($arguments, $caption = null, $parser = null)
+    {
+        if (!isset($arguments['id'])) {
             return null;
         }
-        if(substr($arguments['id'], 0, 4) == 'http'){
+        if (substr($arguments['id'], 0, 4) == 'http') {
             $id = explode('/status/', $arguments['id']);
             $id = $id[1];
-        }
-        else{
+        } else {
             $id = $arguments['id'];
         }
 
-        $tweet = EmbeddedTweet::get()->filter('TwitterID',$id)->first();
+        $tweet = EmbeddedTweet::get()->filter('TwitterID', $id)->first();
         if (!$tweet) {
             $data = json_decode(file_get_contents('https://api.twitter.com/1/statuses/oembed.json?align=center&id='.$id.'&omit_script=true'), 1);
             $tweet = new EmbeddedTweet();
@@ -33,7 +34,6 @@ class TwitterShortCodeHandler {
 
             $tweet->Author = $author;
             $tweet->write();
-
         }
         
 
@@ -61,4 +61,3 @@ class TwitterShortCodeHandler {
         */
     }
 }
-?>
